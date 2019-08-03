@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="残竹新箨">
-    <meta name="description" content="残竹新箨">
+    <meta name="keywords" content="Java中小知识点, 残竹新箨">
+    <meta name="description" content="java中“==”与equals()的区别在java中，存在“==”和equals这两个判断变量（或对象）是否相等的方法，“==”是逻辑运算符，equals()是Object的一个成语方法，也就是说java中的所有对象都可以用equals(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>残竹新箨</title>
+    <title>Java中小知识点 | 残竹新箨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +246,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        Java中小知识点
                     </div>
                 </div>
             </div>
@@ -361,9 +361,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -374,7 +378,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-08-02
+                    2018-07-15
                 </div>
 
                 
@@ -390,9 +394,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>categories </title></head><body>
+                <h2 id="java中“-”与equals-的区别"><a href="#java中“-”与equals-的区别" class="headerlink" title="java中“==”与equals()的区别"></a>java中“==”与equals()的区别</h2><p>在java中，存在“==”和equals这两个判断变量（或对象）是否相等的方法，“==”是逻辑运算符，equals()是Object的一个成语方法，也就是说java中的所有对象都可以用equals()这个方法。至于两者的区别，网上有说法说“==”比较的是对象引用是否相同，也就是说判断引用变量是否指向同一个对象，而equals()方法比较的是对象中的值。从对象的本质来说，这种说法是不对的，对象并没有一个确定的值。事实上，equals()是任何类都可以重写的一个方法，程序员可以自定义equals()方法的实体。对于String类来说，确实如上面的说法一样，equals()方法比较的是两个String 对象所代表的字符串的值是不是相同，但其原因是String类中重写的equals()方法实现了比较String对象中字符串值的功能。</p>
+<h2 id="java的强制类型转换"><a href="#java的强制类型转换" class="headerlink" title="java的强制类型转换"></a>java的强制类型转换</h2><p>基本类型之间的转换只能在数值类型之间进行，这里所说的数值类型包括整形、字符型、浮点型，但数值类型和布尔类型之间不能进行类型转换。</p>
+<p>引用类型之间的转换只能在具有继承关系的两种类型间进行，如果没有继承关系的两种类型进行强制类型转换，将会产生编译错误。</p>
+<h2 id="java访问控制符的访问权限"><a href="#java访问控制符的访问权限" class="headerlink" title="java访问控制符的访问权限"></a>java访问控制符的访问权限</h2><p>public：公共访问权限<br>private：当前类访问权限<br>default：包访问权限<br>protected：所在类的子类访问权限。如果使用protecte修饰一个方法，通常是需要其子类重写这个方法。</p>
+<p>访问控制符的作用在于控制一个类的成员是否能被其他类访问（控制它的作用域），对于局部变量，其作用域就是它所在的方法，故局部变量不能被这些访问控制符修饰。</p>
+<p>由于外部类不属于任何一个类，也就不存在所在类内部和所在类子类的说法，所以private和protected对外部类来说没有意义。外部类可以用public修饰，使用public修饰的外部类可以被所有类使用，default修饰的外部类只能被处于同一个包中的其他类使用。</p>
+<h2 id="java构造器的返回值"><a href="#java构造器的返回值" class="headerlink" title="java构造器的返回值"></a>java构造器的返回值</h2><p>在java中，类的构造器（Constructor）在形式上与成员变量差不多，区别在于构造器不能指定返回值类型，不能用void声明构造器没有返回值，更不能在构造器中显示return某个值或该类的实例，如果在类名前加上类型定义的函数，则会被编译器认为是普通的成员函数。从本质上来说，构造器是有返回值的，构造器在使用new创建对象的时候被调用，返回值总是该类的实例，故无须定义返回值。</p>
+<h2 id="Java源文件的命名规则"><a href="#Java源文件的命名规则" class="headerlink" title="Java源文件的命名规则"></a>Java源文件的命名规则</h2><p>1、Java源文件的 后缀必须是.java</p>
+<p>2、在java源文件的类没有用public修饰的情况下，主文件名可以是任意的，一个java文件里可以有无数个类。但如果如果源文件中存在一个public修饰的类，这个源文件的文件名必须与该类的名称相同，也就是一个java源文件中最多只能定义一个public修饰的类。</p>
+<p>3、最好在一个java源文件中只定义一个类，内部类除外。不同的类使用不同的源文件定义，java源文件的文件名与类名字相同，首字母大写。</p>
+<h2 id="java中static关键字的作用"><a href="#java中static关键字的作用" class="headerlink" title="java中static关键字的作用"></a>java中static关键字的作用</h2><p>static在java语言中有着修饰成员变量、成员方法、内部类、初始化块这四个作用，将static修饰的变量和方法直译为静态成员变量和静态成员方法并不能直接在字面意思上体现他的作用，static真正的作用是区分修饰的东西到底属于该类（Class）本身还是属于对象（instance）。有static修饰的成员属于类本身，而没有static修饰的成员属于该类的实例，也就是说static修饰的成员变量或方法可以通过类名或类的实例使用，而没有static修饰的方法和成员变量必须在该对象的某一个实例中才能通过实例使用。</p>
+<p>由于static修饰的成员方法可以直接通过类名调用，而this指针则是代表调用该方法的具体的对象，所以static方法中无法调用非静态的的成员方法和成员变量。同时，static方法中不能使用this和super。</p>
+<h2 id="java的main-方法中不能new内部类对象"><a href="#java的main-方法中不能new内部类对象" class="headerlink" title="java的main()方法中不能new内部类对象"></a>java的main()方法中不能new内部类对象</h2><p>java的main()方法是个静态方法，它是游离于任何类之外的(就跟C/C++一样，单独一个main方法)，因此某类的非静态内部类对它而言是不直接可见的，也就无法直接访问。java中static修饰的成员不能访问没有用static修饰的成员。<br>main 方法是个静态方法，而静态类不是个静态内部类，所以不能直接初始化。<br>对main方法而言，虽然写在类中，非静态变量不能从静态上下文中引用</p>
+<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>synchronized 关键字可以修饰方法、代码块。不能修饰构造器、成员变量。</p>
 
-</body></html>
             </div>
             <hr/>
 
@@ -426,9 +442,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《》
+                    《Java中小知识点》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/categories/index-1.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/07/15/Java中小知识点/" property="cc:attributionName"
                rel="cc:attributionURL">
                 rookiegan
             </a> is licensed under a
@@ -473,26 +489,24 @@
                 <i class="fa fa-dot-circle-o"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2018/07/15/Java中小知识点/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java中小知识点">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Java中小知识点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            java中“==”与equals()的区别在java中，存在“==”和equals这两个判断变量（或对象）是否相等的方法，“==”是逻辑运算符，equals()是Object的一个成语方法，也就是说java中的所有对象都可以用equals(
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-15
                             </span>
                         <span class="publish-author">
                             
@@ -504,35 +518,41 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2018/07/03/面向对象/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="面向对象">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">面向对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            面向对象将现实世界的所有事物都看作对象，根据这些事物的本质特点和相互关系，把他们抽象为一个个具体的类，和事物是构成世界的基本单元一样，类和对象是构成面向对象程序的基本构成单元。这样设计的好处是将软件系统设计得和客观世界更加相识，更符合人类的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-03
                             </span>
                         <span class="publish-author">
                             
@@ -542,7 +562,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/软件设计/" target="_blank">
+                        <span class="chip bg-color">软件设计</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

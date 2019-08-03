@@ -4,8 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="残竹新箨">
-    <meta name="description" content="残竹新箨">
+    <meta name="keywords" content="Java的初步理解, 残竹新箨">
+    <meta name="description" content="在Java语言中初次使用自定义类的数组时，参照C++中的自定义类数组，编写了如下代码
+public class Test {
+    public static void main(String[] args) {
+
+        Per">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>残竹新箨</title>
+    <title>Java的初步理解 | 残竹新箨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +250,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        Java的初步理解
                     </div>
                 </div>
             </div>
@@ -361,9 +365,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -374,7 +382,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-08-02
+                    2018-06-27
                 </div>
 
                 
@@ -390,9 +398,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>categories </title></head><body>
+                <p>在Java语言中初次使用自定义类的数组时，参照C++中的自定义类数组，编写了如下代码</p>
+<pre><code>public class Test {
+    public static void main(String[] args) {
 
-</body></html>
+        Person[] persons = new Person[3];
+
+        persons[0].name = &quot;Rookiegan&quot;;
+        persons[0].age = 22;
+
+        for(Person p : persons) {
+            System.out.println(&quot;name:&quot; + p.name);
+            System.out.println(&quot;age: &quot; + p.age);
+        }
+    }    
+
+    static class Person {
+        String name;
+        int age;
+    }
+｝</code></pre><p>从C++的逻辑来看，这段代码似乎没有问题，编译也顺利通过，但在执行的时候在persons[0].name = “Rookiegan”;这一句抛出空指针异常，也就是说persons[0]根本没有指向一段真正的内存空间。于是我为Person类添加了自定义的构造函数，输出打印信息。</p>
+<pre><code>Person() {
+    System.out.println(&quot;Person Constructor&quot;);
+}</code></pre><p>测试发现现象与不加一样，这个构造函数根本没有执行。</p>
+<p>查阅资料发现，由于Java中引用变量存储在栈中，而真正的对象存储在堆中，Person[] persons = new Person[3];这个语句根本不会为数组的成员分配内存，只是在栈中定义一个Person[]类的引用，该引用应该指向3个Person类的对象。</p>
+<p>将程序进行如下更改，编译通过，且执行正常。</p>
+<pre><code>public class Test {
+    public static void main(String[] args) {
+
+        Person[] persons = new Person[3];
+
+        // 如不使用用以下三行代码，执行到persons[0].name = &quot;Rookiegan&quot;时会报空指针异常
+        persons[0] = new Person();
+        persons[1] = new Person();
+        persons[2] = new Person();
+
+        persons[0].name = &quot;Rookiegan&quot;;
+        persons[0].age = 22;
+
+        for(Person p : persons) {
+            System.out.println(&quot;name:&quot; + p.name);
+            System.out.println(&quot;age: &quot; + p.age);
+        }
+
+    }    
+
+    static class Person {
+        String name;
+        int age;
+
+        Person() {
+            System.out.println(&quot;Person Constructor&quot;);
+        }
+    }
+}</code></pre>
             </div>
             <hr/>
 
@@ -426,9 +485,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《》
+                    《Java的初步理解》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/categories/index-1.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/06/27/Java自定义类数组的使用/" property="cc:attributionName"
                rel="cc:attributionURL">
                 rookiegan
             </a> is licensed under a
@@ -468,32 +527,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2018/06/29/Java的初步理解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Java的初步理解">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Java的初步理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            Java简介Java是一种纯粹的面向对象的程序设计语言，Java程序必须以类的形式存在，类是java程序的最小程序单位，java程序中不允许可执行语句、方法、变量等单独存在，所有的程序必须放在某一个类里面，这个有别于C/C++中的全局变量、
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -502,7 +558,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -510,29 +573,28 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2018/04/03/ARM汇编指令/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="ARM汇编指令">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">ARM汇编指令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            机器语言在CPU中，通过控制电路中开关的状态可以让对应的电路工作，执行一些运算，每一个电路对应的一定长度（ARM指令长度为32位）的10101的二进制代码，这个代码就是机器语言
+汇编语言用助记符代替操作码，用地址符（#、：、%、&amp;、
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-03
                             </span>
                         <span class="publish-author">
                             
@@ -542,7 +604,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/计算机组成原理/" target="_blank">
+                        <span class="chip bg-color">计算机组成原理</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
