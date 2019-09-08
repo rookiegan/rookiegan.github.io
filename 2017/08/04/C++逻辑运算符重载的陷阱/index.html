@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="有符号数和无符号数, 残竹新箨">
-    <meta name="description" content="与java语言不同，在C/C++语言中有着有符号数与无符号数的概念，有符号数可以表示正数、0、负数，无符号数只能表示非负数。数据位数相同的有符号数和无符号数所能表示的数据个数是一样的，但由于有符号数最高位为符号位，两者表示的数字的区间不同。">
+    <meta name="keywords" content="C++逻辑运算符重载的陷阱, 残竹新箨">
+    <meta name="description" content="C++逻辑运算符重载的使用在各种编程语言中，都提供了逻辑运算符，包括与（&amp;amp;&amp;amp;）、或（）、异或（）等等。C++提供了强大的运算符重载的功能，这里记录一下重载逻辑运算符的陷阱。
+逻辑运算符的短路原则C++逻辑运算符重载#incl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>有符号数和无符号数 | 残竹新箨</title>
+    <title>C++逻辑运算符重载的陷阱 | 残竹新箨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +247,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        有符号数和无符号数
+                        C++逻辑运算符重载的陷阱
                     </div>
                 </div>
             </div>
@@ -378,7 +379,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2017-11-03
+                    2017-08-04
                 </div>
 
                 
@@ -394,32 +395,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>与java语言不同，在C/C++语言中有着有符号数与无符号数的概念，有符号数可以表示正数、0、负数，无符号数只能表示非负数。数据位数相同的有符号数和无符号数所能表示的数据个数是一样的，但由于有符号数最高位为符号位，两者表示的数字的区间不同。例如，char和unsigned char在内存中都占用8个字节，最多能表示2^8也就是256个数字，char表示的范围为[-128, 127]，unsigned char表示的范围为[0, 255]。</p>
-<h2 id="有符号数的表示方法"><a href="#有符号数的表示方法" class="headerlink" title="有符号数的表示方法"></a>有符号数的表示方法</h2><p>有符号数据类型（比如int、long）的最高位用于标识数据的符号，<br>最高位为1，表明这个数是负数。<br>最高位为0，表明这个数是正数。<br>以下程序所示<br>int main(void) {</p>
-<pre><code>char c = -11;    
-short s = 5;
-int i = -7;
+                <h2 id="C-逻辑运算符重载的使用"><a href="#C-逻辑运算符重载的使用" class="headerlink" title="C++逻辑运算符重载的使用"></a>C++逻辑运算符重载的使用</h2><p>在各种编程语言中，都提供了逻辑运算符，包括与（&amp;&amp;）、或（）、异或（）等等。<br>C++提供了强大的运算符重载的功能，这里记录一下重载逻辑运算符的陷阱。</p>
+<h2 id="逻辑运算符的短路原则"><a href="#逻辑运算符的短路原则" class="headerlink" title="逻辑运算符的短路原则"></a>逻辑运算符的短路原则</h2><h2 id="C-逻辑运算符重载"><a href="#C-逻辑运算符重载" class="headerlink" title="C++逻辑运算符重载"></a>C++逻辑运算符重载</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> mValue;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Test(<span class="keyword">int</span> v)</span><br><span class="line">    &#123;</span><br><span class="line">        mValue = v;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>||(<span class="keyword">const</span> Test&amp; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;getValue() || r.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&amp;&amp;(<span class="keyword">const</span> Test&amp; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;getValue() &amp;&amp; r.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Test <span class="title">fun</span><span class="params">(Test t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"int fun(Test t), t = "</span> &lt;&lt; t.getValue() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Test <span class="title">a</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="function">Test <span class="title">b</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (fun(a) || fun(b)) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (fun(a) &amp;&amp; fun(b)) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-printf(&quot;%d\n&quot;, (c &amp; 0x80) == 0);
-printf(&quot;%d\n&quot;, (s &amp; 0x8000) == 0);
-printf(&quot;%d\n&quot;, (i &amp; 0x80000000) == 0);
-
-return 0;</code></pre><p>}</p>
-<p>输出结果为</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>0x80是8位无符号数，char c转化为无符号数后，最高位为符号位1，故c &amp; 0x80 == 0x80</p>
-<p>计算机内部用补码表示有符号数<br>正数的补码为正数本身<br>负数的补码为负数的绝对值各位取反后加1<br>8位整数5的补码为： 0000 0101<br>8位整数-7的补码为：1111 1001       计算过程 7–&gt; 0000 0111 –&gt;1111 1000 -&gt; 1111 1001<br>16位整数20的补码为： 0000 0000 0001 0100<br>16位整数-13的补码为：1111 1111 1111 0011<br>计算过程13–&gt; 0000 0000 0000 1101 –&gt;1111 1111 1111 0010 -&gt; 1111 1111 1111 0011</p>
-<h2 id="无符号数的表示方法"><a href="#无符号数的表示方法" class="headerlink" title="无符号数的表示方法"></a>无符号数的表示方法</h2><p>在计算机内部用原码表示无符号数，无符号数没有符号位，只用于表示正数。<br>无符号数默认为为正数，没有符号位。<br>对于固定长度的无符号数，<br>-MAX_VALUE + 1 = MIN_VALUE(0)<br>-MIN_VALUE - 1 = MAX_VALUE(FFF…FFF)</p>
-<p>C语言中的变量默认为有符号类型<br>unsigned关键字声明变量为无符号类型<br>C语言中只有整数类型能够声明为unsigned变量，比如char、int、short这些可以有对应的unsigned char、unsigned int、unsigned short,而float、double这些本身就是带符号的。 </p>
-<h2 id="有符号数和无符号数进行运算"><a href="#有符号数和无符号数进行运算" class="headerlink" title="有符号数和无符号数进行运算"></a>有符号数和无符号数进行运算</h2><p>当无符号数和有符号数进行运算时，有符号数会转化为无符号数再参与运算。<br>如以下程序所示</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">-10</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> j = <span class="number">5</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"-10 + 5 = %d\n"</span>, i + j);</span><br><span class="line">	<span class="keyword">if</span> ( (i + j) &gt; <span class="number">0</span> ) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-10 + 5 &gt; 0\n"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-10 + 5  &lt;= 0\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为<br>i + j = -5<br>-10 + 5 &gt; 0</p>
-<p>其原因是int型的i与unsigned int型的 j进行运算时，会将i转化为unsigned int类型，也就是一个很大的正整数，所以-10 + 5 &gt; 0，而-10 + 5 =  -5则是因为“%d”是c语言中printf函数中定义的有符号数的符号，这里输出是又将相加后这个很大的整数转化为有符号数。</p>
-<p>无符号数的最小值为0，最小值-1将变成最大值。以下程序将会进入无限循环。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">5</span>; i &gt;= <span class="number">0</span>; i-- ) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"i = %d\n"</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="短路原则失效"><a href="#短路原则失效" class="headerlink" title="短路原则失效"></a>短路原则失效</h2><p>上面程序的运行结果：<br>    int fun(Test t), t = 1<br>    int fun(Test t), t = 0<br>    1</p>
+<pre><code>int fun(Test t), t = 1
+int fun(Test t), t = 0
+0</code></pre><h2 id="使用逻辑运算符重载的建议"><a href="#使用逻辑运算符重载的建议" class="headerlink" title="使用逻辑运算符重载的建议"></a>使用逻辑运算符重载的建议</h2><p>在实际工程开发中，尽量避免重载逻辑操作符；<br>通过重载比较操作符替代逻辑操作符重载；<br>直接使用成员函数代替逻辑操作符重载；<br>使用全局函数对逻辑操作符进行重载；</p>
 
             </div>
             <hr/>
@@ -454,9 +436,9 @@ return 0;</code></pre><p>}</p>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《有符号数和无符号数》
+                    《C++逻辑运算符重载的陷阱》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/11/03/有符号数和无符号数/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/08/04/C++逻辑运算符重载的陷阱/" property="cc:attributionName"
                rel="cc:attributionURL">
                 rookiegan
             </a> is licensed under a
@@ -500,51 +482,6 @@ return 0;</code></pre><p>}</p>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2018/02/03/编程语言中变量和数据类型的理解/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="编程语言中变量和数据类型的理解">
-                        
-                        <span class="card-title">编程语言中变量和数据类型的理解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            数据类型数据类型是创建变量的模子，可以理解为拥有固定内存大小和统一解析方法的内存的别名，用来为编译器提供该类型数据需要的内存空间大小和数据的解析方法。例如int类型数据就是占4个字节，按照有符号整形数据进行操作。double类型数据占8个字
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-02-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            rookiegan
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/编程语言/" target="_blank">
-                        <span class="chip bg-color">编程语言</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2017/09/08/C语言变量的属性/">
                     <div class="card-image">
                         
@@ -562,8 +499,54 @@ autoauto是C语言中局部变量的默认属性，a
                         
                     </div>
                     <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            rookiegan
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-C/" target="_blank">
+                        <span class="chip bg-color">C/C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/08/04/C++逻辑运算符重载的陷阱/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="C++逻辑运算符重载的陷阱">
+                        
+                        <span class="card-title">C++逻辑运算符重载的陷阱</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            C++逻辑运算符重载的使用在各种编程语言中，都提供了逻辑运算符，包括与（&amp;&amp;）、或（）、异或（）等等。C++提供了强大的运算符重载的功能，这里记录一下重载逻辑运算符的陷阱。
+逻辑运算符的短路原则C++逻辑运算符重载#incl
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-04
                             </span>
                         <span class="publish-author">
                             
@@ -573,6 +556,7 @@ autoauto是C语言中局部变量的默认属性，a
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
