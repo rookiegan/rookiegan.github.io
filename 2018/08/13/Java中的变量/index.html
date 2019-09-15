@@ -50,7 +50,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -459,8 +459,18 @@
 <td>栈</td>
 </tr>
 </tbody></table>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Variables</span> </span>&#123;</span><br><span class="line">	<span class="comment">// a是类变量</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// b是成员变量</span></span><br><span class="line">	<span class="keyword">int</span> b;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// c和d是局部变量</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> d;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Variables</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// a是类变量</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> a<span class="token punctuation">;</span>
 
+    <span class="token comment" spellcheck="true">// b是成员变量</span>
+    <span class="token keyword">int</span> b<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// c和d是局部变量</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> d<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>

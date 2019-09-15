@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java的初步理解, 残竹新箨">
+    <meta name="keywords" content="Java自定义类数组的使用, 残竹新箨">
     <meta name="description" content="在Java语言中初次使用自定义类的数组时，参照C++中的自定义类数组，编写了如下代码
 public class Test {
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class Test {
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java的初步理解 | 残竹新箨</title>
+    <title>Java自定义类数组的使用 | 残竹新箨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -36,7 +36,7 @@ public class Test {
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -250,13 +250,13 @@ public class Test {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java的初步理解
+                        Java自定义类数组的使用
                     </div>
                 </div>
             </div>
@@ -408,59 +408,61 @@ public class Test {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>在Java语言中初次使用自定义类的数组时，参照C++中的自定义类数组，编写了如下代码</p>
-<pre><code>public class Test {
-    public static void main(String[] args) {
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        Person[] persons = new Person[3];
+        Person<span class="token punctuation">[</span><span class="token punctuation">]</span> persons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        persons[0].name = &quot;Rookiegan&quot;;
-        persons[0].age = 22;
+        persons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Rookiegan"</span><span class="token punctuation">;</span>
+        persons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
 
-        for(Person p : persons) {
-            System.out.println(&quot;name:&quot; + p.name);
-            System.out.println(&quot;age: &quot; + p.age);
-        }
-    }    
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Person p <span class="token operator">:</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"name:"</span> <span class="token operator">+</span> p<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"age: "</span> <span class="token operator">+</span> p<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>    
 
-    static class Person {
-        String name;
-        int age;
-    }
-｝</code></pre><p>从C++的逻辑来看，这段代码似乎没有问题，编译也顺利通过，但在执行的时候在persons[0].name = “Rookiegan”;这一句抛出空指针异常，也就是说persons[0]根本没有指向一段真正的内存空间。于是我为Person类添加了自定义的构造函数，输出打印信息。</p>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+        String name<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从C++的逻辑来看，这段代码似乎没有问题，编译也顺利通过，但在执行的时候在persons[0].name = “Rookiegan”;这一句抛出空指针异常，也就是说persons[0]根本没有指向一段真正的内存空间。于是我为Person类添加了自定义的构造函数，输出打印信息。</p>
 <pre><code>Person() {
     System.out.println(&quot;Person Constructor&quot;);
 }</code></pre><p>测试发现现象与不加一样，这个构造函数根本没有执行。</p>
 <p>查阅资料发现，由于Java中引用变量存储在栈中，而真正的对象存储在堆中，Person[] persons = new Person[3];这个语句根本不会为数组的成员分配内存，只是在栈中定义一个Person[]类的引用，该引用应该指向3个Person类的对象。</p>
 <p>将程序进行如下更改，编译通过，且执行正常。</p>
-<pre><code>public class Test {
-    public static void main(String[] args) {
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        Person[] persons = new Person[3];
+        Person<span class="token punctuation">[</span><span class="token punctuation">]</span> persons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        // 如不使用用以下三行代码，执行到persons[0].name = &quot;Rookiegan&quot;时会报空指针异常
-        persons[0] = new Person();
-        persons[1] = new Person();
-        persons[2] = new Person();
+        <span class="token comment" spellcheck="true">// 如不使用用以下三行代码，执行到persons[0].name = "Rookiegan"时会报空指针异常</span>
+        persons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        persons<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        persons<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        persons[0].name = &quot;Rookiegan&quot;;
-        persons[0].age = 22;
+        persons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Rookiegan"</span><span class="token punctuation">;</span>
+        persons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">22</span><span class="token punctuation">;</span>
 
-        for(Person p : persons) {
-            System.out.println(&quot;name:&quot; + p.name);
-            System.out.println(&quot;age: &quot; + p.age);
-        }
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Person p <span class="token operator">:</span> persons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"name:"</span> <span class="token operator">+</span> p<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"age: "</span> <span class="token operator">+</span> p<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    }    
+    <span class="token punctuation">}</span>    
 
-    static class Person {
-        String name;
-        int age;
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+        String name<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> age<span class="token punctuation">;</span>
 
-        Person() {
-            System.out.println(&quot;Person Constructor&quot;);
-        }
-    }
-}</code></pre>
+        <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Person Constructor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -494,7 +496,7 @@ public class Test {
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Java的初步理解》
+                    《Java自定义类数组的使用》
                 </span> by
             <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/06/27/Java自定义类数组的使用/" property="cc:attributionName"
                rel="cc:attributionURL">
