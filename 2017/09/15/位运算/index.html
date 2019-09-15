@@ -4,8 +4,37 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="残竹新箨">
-    <meta name="description" content="残竹新箨">
+    <meta name="keywords" content="位运算, 残竹新箨">
+    <meta name="description" content="位运算符简介位运算符直接对bit位进行操作，其效率最高，C语言支持以下位运算符。
+
+
+
+位运算符
+作用
+
+
+
+&amp;amp;
+按位与
+
+
+\
+按位或
+
+
+^
+按位异或
+
+
+~
+按位取反
+
+
+&amp;lt;&amp;lt; &amp;gt;&amp;gt;
+左右移运算
+
+
+&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +42,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>残竹新箨</title>
+    <title>位运算 | 残竹新箨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -246,13 +275,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        位运算
                     </div>
                 </div>
             </div>
@@ -361,12 +390,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/计算机组成原理/" target="_blank">
+                                <span class="chip bg-color">计算机组成原理</span>
+                            </a>
+                        
+                            <a href="/tags/编程语言/" target="_blank">
+                                <span class="chip bg-color">编程语言</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/编程语言/" class="post-category" target="_blank">
+                                编程语言
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -374,7 +420,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-13
+                    2017-09-15
                 </div>
 
                 
@@ -390,9 +436,116 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>categories </title><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body>
+                <h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>位运算符直接对bit位进行操作，其效率最高，C语言支持以下位运算符。</p>
+<table>
+<thead>
+<tr>
+<th>位运算符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>\</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反</td>
+</tr>
+<tr>
+<td>&lt;&lt; &gt;&gt;</td>
+<td>左右移运算</td>
+</tr>
+<tr>
+<td>&lt;&lt;&lt; &gt;&gt;&gt;</td>
+<td>左右移运算</td>
+</tr>
+</tbody></table>
+<h2 id="左右移运算的规则"><a href="#左右移运算的规则" class="headerlink" title="左右移运算的规则"></a>左右移运算的规则</h2><p>左操作数必须为整形类型，不能为浮点类型，char和short被隐式转换为int后进行以为操作。<br>右操作数的范围必须为[0, 31]之间的整数。<br>以上是标准C规范的定义，不同编译器可能有不同的实现，比如某些编译器循序右操作数范围为32，某些编译器下右操作数为负数也能够编译通过，这种情况应尽量避免。<br>左移运算符&lt;&lt;将运算数的二进制位左移，规则是高位丢弃，低位补0。<br>右移运算符&gt;&gt;将运算数的二进制位右移，规则是高位补符号位，低位丢弃。<br>测试代码：</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">float</span> f <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
 
-</body></html>
+<span class="token comment" spellcheck="true">//    printf("0x%08x\n", f &lt;&lt; 4);        // error</span>
+<span class="token comment" spellcheck="true">//    printf("0x%08x\n", 0x0001 &lt;&lt; 1.4);      // error</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x\n"</span><span class="token punctuation">,</span> <span class="token number">0x0001</span> <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 0x00000010</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x\n"</span><span class="token punctuation">,</span> <span class="token number">0x00010000</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 0x00001000</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x\n"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 0xfffffff0</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x\n"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">16</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 0xffffffff</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%08x\n"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">16</span> <span class="token operator">>></span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 不同编译器的处理结果不同</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 32</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="防错准则："><a href="#防错准则：" class="headerlink" title="防错准则："></a>防错准则：</h3><p>避免位运算符、逻辑运算符和数学运算符同时出现在一个表达式中。当位运算符、逻辑运算符和数学运算符需要同时参与运算时，尽量使用括号（）来表达计算次序。<br>小技巧：<br>左移n位相当于乘以2的n次方，但效率比数学运算符高<br>右移n位相当于除以2的n次方，但效率比数学运算符高</p>
+<h2 id="位运算与逻辑运算的区别"><a href="#位运算与逻辑运算的区别" class="headerlink" title="位运算与逻辑运算的区别"></a>位运算与逻辑运算的区别</h2><p>位运算与逻辑运算的不同：<br>位运算没有短路原则，每个操作数都参与运算。<br>位运算的结果为整数，而不是1或0。<br>位运算的优先级高于逻辑运算优先级。</p>
+<p>测试代码</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>i <span class="token operator">|</span> <span class="token operator">++</span>j <span class="token operator">&amp;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Running\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"i = %d, j = %d, k = %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+
+    <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> z <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>x <span class="token operator">||</span> <span class="token operator">++</span>y <span class="token operator">&amp;&amp;</span> <span class="token operator">++</span>z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Running\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"x = %d, y = %d, z = %d\n"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>运行结果</p>
+<pre class=" language-c"><code class="language-c">Running
+i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">1</span>
+Running
+x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">0</span></code></pre>
+<h2 id="位运算的作用"><a href="#位运算的作用" class="headerlink" title="位运算的作用"></a>位运算的作用</h2><h3 id="节省内存"><a href="#节省内存" class="headerlink" title="节省内存"></a>节省内存</h3><p>同样的内存空间使用位运算来存储更多的信息</p>
+<h3 id="提高效率"><a href="#提高效率" class="headerlink" title="提高效率"></a>提高效率</h3><p>由于位运算是CPU中的指令集，所以他的运算效率是最高的，可以用位运算来提高乘除法的效率</p>
+<h3 id="其他骚操作"><a href="#其他骚操作" class="headerlink" title="其他骚操作"></a>其他骚操作</h3><h4 id="使用位运算实现两个数交换值"><a href="#使用位运算实现两个数交换值" class="headerlink" title="使用位运算实现两个数交换值"></a>使用位运算实现两个数交换值</h4><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> SWAP0(a, b) {    \
+    int temp = a;        \
+    a = b;                \
+    b = temp;            \
+}</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> SWAP1(a, b) {    \
+    a = a + b;            \
+    b = a - b;            \
+    a = a - b;            \
+}</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> SWAP2(a, b) {    \
+    a = a ^ b;            \
+    b = a ^ b;            \
+    a = a ^ b;            \
+}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %d, b = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+    <span class="token function">SWAP0</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//    SWAP1(a, b);</span>
+<span class="token comment" spellcheck="true">//    SWAP2(a, b);</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %d, b = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="使用位运算统计二进制数0-1的数量"><a href="#使用位运算统计二进制数0-1的数量" class="headerlink" title="使用位运算统计二进制数0/1的数量"></a>使用位运算统计二进制数0/1的数量</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>位运算符只能用于整数类型。<br>右移和左移运算符的右操作数范围必须为[0, 32]<br>位运算没有短路原则，所有操作数均会求值。<br>位运算的效率高于四则运算和逻辑运算<br>运算优先级：四则运算 &gt; 位运算 &gt; 逻辑运算</p>
+
             </div>
             <hr/>
 
@@ -426,9 +579,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《》
+                    《位运算》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/categories/index-1.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2017/09/15/位运算/" property="cc:attributionName"
                rel="cc:attributionURL">
                 rookiegan
             </a> 采用
@@ -468,41 +621,49 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2017/11/03/有符号数和无符号数/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="有符号数和无符号数">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">有符号数和无符号数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            与java语言不同，在C/C++语言中有着有符号数与无符号数的概念，有符号数可以表示正数、0、负数，无符号数只能表示非负数。数据位数相同的有符号数和无符号数所能表示的数据个数是一样的，但由于有符号数最高位为符号位，两者表示的数字的区间不同。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-11-03
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            rookiegan
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/编程语言/" class="post-category" target="_blank">
+                                    编程语言
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-C/" target="_blank">
+                        <span class="chip bg-color">C/C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -510,29 +671,28 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/categories/index-1.html">
+                <a href="/2017/09/08/C语言变量的属性/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="C语言变量的属性">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">C语言变量的属性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            categories 
-
-
+                            C语言中的变量可以有自己的属性，在定义变量是可以加上属性关键字，属性关键字指明变量有着特殊的含义。C语言中有着auto、register、static、const、extern等属性关键字。
+autoauto是C语言中局部变量的默认属性，a
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-08
                             </span>
                         <span class="publish-author">
                             
@@ -542,7 +702,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-C/" target="_blank">
+                        <span class="chip bg-color">C/C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
