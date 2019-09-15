@@ -405,7 +405,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="C-逻辑运算符重载的使用"><a href="#C-逻辑运算符重载的使用" class="headerlink" title="C++逻辑运算符重载的使用"></a>C++逻辑运算符重载的使用</h2><p>在各种编程语言中，都提供了逻辑运算符，包括与（&amp;&amp;）、或（）、异或（）等等。<br>C++提供了强大的运算符重载的功能，这里记录一下重载逻辑运算符的陷阱。</p>
-<h2 id="逻辑运算符的短路原则"><a href="#逻辑运算符的短路原则" class="headerlink" title="逻辑运算符的短路原则"></a>逻辑运算符的短路原则</h2><h2 id="C-逻辑运算符重载"><a href="#C-逻辑运算符重载" class="headerlink" title="C++逻辑运算符重载"></a>C++逻辑运算符重载</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<h2 id="逻辑运算符的短路原则"><a href="#逻辑运算符的短路原则" class="headerlink" title="逻辑运算符的短路原则"></a>逻辑运算符的短路原则</h2><h2 id="C-逻辑运算符重载"><a href="#C-逻辑运算符重载" class="headerlink" title="C++逻辑运算符重载"></a>C++逻辑运算符重载</h2><pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
@@ -451,7 +451,7 @@ Test <span class="token function">fun</span><span class="token punctuation">(</s
     cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token function">fun</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">fun</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="短路原则失效"><a href="#短路原则失效" class="headerlink" title="短路原则失效"></a>短路原则失效</h2><p>上面程序的运行结果：<br>    int fun(Test t), t = 1<br>    int fun(Test t), t = 0<br>    1</p>
 <pre><code>int fun(Test t), t = 1
 int fun(Test t), t = 0

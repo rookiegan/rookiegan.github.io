@@ -408,7 +408,7 @@ public class Test {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>在Java语言中初次使用自定义类的数组时，参照C++中的自定义类数组，编写了如下代码</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         Person<span class="token punctuation">[</span><span class="token punctuation">]</span> persons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -426,14 +426,14 @@ public class Test {
         String name<span class="token punctuation">;</span>
         <span class="token keyword">int</span> age<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-｝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+｝</code></pre>
 <p>从C++的逻辑来看，这段代码似乎没有问题，编译也顺利通过，但在执行的时候在persons[0].name = “Rookiegan”;这一句抛出空指针异常，也就是说persons[0]根本没有指向一段真正的内存空间。于是我为Person类添加了自定义的构造函数，输出打印信息。</p>
 <pre><code>Person() {
     System.out.println(&quot;Person Constructor&quot;);
 }</code></pre><p>测试发现现象与不加一样，这个构造函数根本没有执行。</p>
 <p>查阅资料发现，由于Java中引用变量存储在栈中，而真正的对象存储在堆中，Person[] persons = new Person[3];这个语句根本不会为数组的成员分配内存，只是在栈中定义一个Person[]类的引用，该引用应该指向3个Person类的对象。</p>
 <p>将程序进行如下更改，编译通过，且执行正常。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         Person<span class="token punctuation">[</span><span class="token punctuation">]</span> persons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -461,7 +461,7 @@ public class Test {
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Person Constructor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
